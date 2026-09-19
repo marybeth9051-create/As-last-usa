@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AdBlast USA - Post Ads to FB, IG, YouTube, Zangi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;background:#0f0f0f;color:#fff;margin:0}
+.header{background:#e50914;padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:24px}
+.btn{background:#e50914;color:#fff;border:none;padding:12px 25px;border-radius:6px;font-weight:bold;cursor:pointer}
+.card{background:#1f1f1f;padding:20px;border-radius:10px;margin:15px 0}
+input,textarea,select{width:100%;padding:12px;margin:8px 0;background:#2a2a2a;border:1px solid #444;color:#fff;border-radius:6px}
+.platforms{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.p-box{border:2px solid #333;padding:12px;border-radius:8px;cursor:pointer;text-align:center}
+.p-box.active{border-color:#e50914;background:#e509141A}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.platforms{grid-template-columns:1fr}}
+.preview{background:#fff;color:#000;padding:10px;border-radius:8px;min-height:200px}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">ADBLAST USA</div>
+<div>🇺🇸 USA Targeting ON</div>
+</div>
+
+<div style="padding:20px;max-width:1100px;margin:auto">
+<div class="grid">
+<div>
+<div class="card">
+<h3>1. Create Your Ad</h3>
+<input id="title" placeholder="Ad Headline - e.g. 50% Off Today Only USA!">
+<textarea id="desc" rows="4" placeholder="Ad description... Add call to action"></textarea>
+<input type="file" id="image" accept="image/*">
+<select id="location">
+<option>Target: All USA</option>
+<option>Target: California + Texas + Florida + New York (Top Buyer States)</option>
+<option>Target: New York, NY</option>
+<option>Target: Los Angeles, CA</option>
+<option>Target: Houston, TX</option>
+<option>Target: Miami, FL</option>
+<option>Target: Chicago, IL</option>
+</select>
+<select id="interest">
+<option>Interest: General Audience</option>
+<option>Interest: Shopping & Fashion</option>
+<option>Interest: Tech & Gadgets</option>
+<option>Interest: Real Estate</option>
+<option>Interest: Crypto / Finance</option>
+<option>Interest: Dating & Lifestyle</option>
+</select>
+</div>
+
+<div class="card">
+<h3>2. Choose Platforms</h3>
+<div class="platforms">
+<div class="p-box active" onclick="this.classList.toggle('active')">📘 Facebook<br><small>Feed + Reels + Marketplace</small></div>
+<div class="p-box active" onclick="this.classList.toggle('active')">📸 Instagram<br><small>Feed + Reels + Story</small></div>
+<div class="p-box active" onclick="this.classList.toggle('active')">▶️ YouTube<br><small>Shorts + Community Post</small></div>
+<div class="p-box" onclick="this.classList.toggle('active')">💬 Zangi<br><small>Channels</small></div>
+</div>
+</div>
+<button class="btn" style="width:100%;font-size:18px" onclick="postAd()">🚀 POST AD TO ALL PLATFORMS NOW</button>
+<div id="status" style="margin-top:10px;color:#0f0"></div>
+</div>
+
+<div>
+<div class="card">
+<h3>Live Preview - How USA People Will See It</h3>
+<div class="preview" id="preview">
+<b>Your ad will appear here...</b>
+</div>
+</div>
+<div class="card">
+<h3>How to Make It REALLY Post (Not Just Demo)</h3>
+<p>To make it work live, you need to connect API keys (free):</p>
+<li><b>Facebook/Instagram:</b> Use Meta Graph API - create app at developers.facebook.com</li>
+<li><b>YouTube:</b> Use YouTube Data API v3 from Google Cloud Console</li>
+<li><b>Zangi:</b> Use Zangi Business API / Bot API</li>
+<p style="font-size:12px;color:#aaa">This demo version saves ads and simulates posting. I can upgrade it to full backend with Node.js + API connections if you want.</p>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function postAd(){
+ let t=document.getElementById('title').value;
+ let d=document.getElementById('desc').value;
+ if(!t){alert('Add headline');return}
+ document.getElementById('preview').innerHTML=`<h3>${t}</h3><p>${d}</p><p style='background:#eee;padding:5px'>📍 Targeting: USA | Sponsored</p>`;
+ document.getElementById('status').innerHTML="✅ Ad queued for Facebook, Instagram, YouTube, Zangi - USA audience. In real version this will push via API.";
+}
+</script>
+</body>
+</html>
